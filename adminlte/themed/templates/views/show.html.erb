@@ -1,0 +1,50 @@
+<%% content_for :breadcrumb  do %>
+<ol class="breadcrumb">
+  <li><a href="/"><i class="fa fa-dashboard"></i> Admin</a></li>
+  <li>
+    <%%= link_to <%= controller_routing_path %>_path do %>
+    <i class="fa fa-th"></i>
+    <%%= t('activerecord.models.<%= model_name %>' , default: '<%= plural_table_name.capitalize %>', count: 2 )%>
+    <%%end%>
+  </li>
+  <li class="active"><%%= t("show", default: "Show")%></li>
+</ol>
+<%% end %>
+
+<div class="box">
+  <div class="box-header box-header-default">
+    <h3 class="box-title">
+      <%%= link_to <%= controller_routing_path %>_path do %>
+      <i class="fa fa-th"></i>
+      <%%= t('activerecord.models.<%= model_name %>' , default: '<%= plural_table_name.capitalize %>', count: 2 )%>
+      <%% end %>
+    </h3>
+  </div>
+
+  <div class="box-body">
+    <%%= form_for(@<%= singular_table_name %>,url: "#", :html => { :role => "form" }) do |f| %>
+    <% columns.each do |column| -%>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 form-group">
+        <%%= f.label :<%= column.name %> %>
+        <span class="form-control">
+          <%%= @<%= singular_table_name %>.<%= column.name %> %>
+        </span>
+      </div>
+    </div>
+    <%end-%>
+    <%%end%>
+  </div><!-- box-body -->
+
+  <div class="box-footer">
+    <%%= link_to(url_for(:back) , class: "btn btn-lg btn-info") do %>
+    <i class="fa fa-arrow-left"></i>
+    <%%= t("back", default: "Back")%>
+    <%% end %>
+
+    <%%= link_to(edit_<%= singular_controller_routing_path %>_path(@<%= singular_table_name %>), class: "btn btn-lg btn-primary") do %>
+    <i class="glyphicon glyphicon-pencil"></i>
+    <%%= t("edit", default: "Edit")%>
+    <%% end %>
+  </div><!-- box-footer -->
+</div><!-- box -->

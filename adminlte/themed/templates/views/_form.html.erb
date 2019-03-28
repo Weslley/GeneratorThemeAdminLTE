@@ -1,0 +1,22 @@
+<% columns.each do |column| -%>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+		<%%= f.label :<%= column.name %> %>
+		<%%= f.<%= field_type(column.type) %> :<%= column.name %>, :class => "form-control" %>
+	</div>
+</div>
+<% end -%>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 form-group">
+		<%%= link_to(url_for(:back) , class: "btn btn-info") do %>
+		<i class="fa fa-arrow-left"></i>
+		<%%= t("back", default: "Back")%>
+		<%% end %>
+
+		<%%= f.button type:"submit" , class: "btn btn-success" do %>
+		<i class="fa fa-save"></i>
+		<%%= t("save", default: "Save")%>
+		<%%end%>
+	</div>
+</div>

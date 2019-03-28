@@ -1,0 +1,30 @@
+<%% content_for :breadcrumb  do %>
+<ol class="breadcrumb">
+	<li><a href="/"><i class="fa fa-dashboard"></i> Admin</a></li>
+	<li>
+		<%%= link_to <%= controller_routing_path %>_path do %>
+			<i class="fa fa-th"></i>
+			<%%= t('activerecord.models.<%= model_name %>' , default: '<%= plural_table_name.capitalize %>', count: 2 )%>
+		<%%end%>
+	</li>
+	<li class="active"><%%= t("edit", default: "Edit")%></li>
+</ol>
+<%% end %>
+
+<!-- Default box -->
+<div class="box">
+	<div class="box-header box-header-default">
+		<h3 class="box-title">
+      <%%= link_to <%= controller_routing_path %>_path do %>
+        <i class="fa fa-th"></i>
+        <%%= t('activerecord.models.<%= model_name %>' , default: '<%= plural_table_name.capitalize %>', count: 2 )%>
+      <%% end %>
+    </h3>
+	</div>
+
+	<div class="box-body">
+		<%%= form_for(@<%= singular_table_name %>,url: <%= singular_controller_routing_path %>_path(@<%= singular_table_name %>), html: { :role => "form" }) do |f| %>
+			<%%= render :partial => "form", :locals => {:f => f} %>
+		<%%end%>
+	</div>
+</div>
