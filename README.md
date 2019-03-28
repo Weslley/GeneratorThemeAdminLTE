@@ -1,7 +1,7 @@
 # GeneratorThemeAdminLTE
 Gerador de código para o padrão visual do famoso tema Adminlte
 
-Coloque a pasta dentro de "/path-your-project/lib/generators/"
+Coloque a pasta "adminlte" dentro de "/path-your-project/lib/generators/"
 
 #Utilização
 
